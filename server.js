@@ -32,7 +32,10 @@ app.get('/', (req, res) => {
     res.send("ello from backend ")
 })
 // change to app.get for the route to work 
-app.post('/complet', async (req,res) => {
+app.get('/complet', async (req,res) => {
+    req.params.type
+
+    
     const options = {
         method: 'POST',
         headers: {
@@ -41,7 +44,7 @@ app.post('/complet', async (req,res) => {
         },
         body: JSON.stringify({
             model: 'gpt-3.5-turbo',
-            messages: [{role: 'user', content: 'what comes after 5?'}],
+            messages: [{role: 'user', content: 'test'}],
             max_tokens: 15,
         })
     }
@@ -85,6 +88,40 @@ app.get('/quiz', (req,res) => { // works but isn't reading quiz.js
         res.write(data)
         res.end()
     })
+
+})
+
+app.post('/grade', (req, res) => {
+
+})
+
+app.post('/ask', async (req, res) => {
+    const length = req.query.length;
+    const topic = req.query.topic;
+    const expertise = req.query.expertise;
+    const style = req.query.style;
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${API_KEY}`,
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            model: 'gpt-3.5-turbo',
+            messages: [{role: 'user', content: `create an open-ended ${length} question quiz about ${topic} on a ${expertise} level in a ${style} accent only seperate by one whitespace`}],
+            // messages: [{role: 'user', content: `repeat after me ${topic} ${length} ${expertise} ${style}`}],
+            max_tokens: 200,
+        })
+    }
+    try {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', options)
+        const data = await response.json()
+        console.log(data);
+        res.send(data.choices[0].message)
+    } catch (error){
+        console.error(error)
+    }
 
 })
 
