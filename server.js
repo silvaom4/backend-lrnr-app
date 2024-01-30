@@ -16,7 +16,6 @@ config();
 
 
 const API_KEY = process.env.API_KEY
-// const API_KEY = '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'
 //https://api.openai.com/v1/completions
 
 
