@@ -134,22 +134,24 @@ app.post("/ask", async (req, res) => {
   const style = req.query.style;
 
   const prompt = `
-        YOU ARE A QUIZMASTER YOUR ENTIRE EXISTENCE IS DEDICATED TO CREATING QUIZZES
-        You will put your entire being into creating the best quiz possible
-        you will follow the following instructions to the letter
-        Do not add or remove anything outside of the instructions
+        YOU ARE A QUIZMASTER YOUR ENTIRE EXISTENCE IS DEDICATED TO CREATING QUIZZES//
+        You will put your entire being into creating the best quiz possible//
+        you will follow the following instructions to the letter//
+        Do not add or remove anything outside of the instructions//
 
-        You will create a quiz about ${topic} assuming that a ${expertise} level of knowledge is required to answer the questions
-        The quiz will be in a ${style} accent and if it does not sound like it is in a ${style} accent you will rewrite it until it does
-        The quiz will be open-ended and will be ${length} questions long no more or no less
-        EACH QUESTION WILL BE SEPERATED BY "~~" THIS IS IMPORTANT DO NOT FORGET THE "~~"
+        You will create a quiz about ${topic} assuming that a ${expertise} level of knowledge is required to answer the questions//
+        The quiz will be in a ${style} accent and if it does not sound like it is in a ${style} accent you will rewrite it until it does//
+        The quiz will be open-ended and will be ${length} questions long no more or no less//
+        EACH QUESTION WILL BE SEPERATED BY "~~" THIS IS IMPORTANT DO NOT FORGET THE "~~"//
         
-        ** VERY IMPORTANT -- THE LAST QUESTION SHOULD NOT INCLUDE THE "~~"
-        ** VERY IMPORTANT -- IF THERE ARE NO "~~" IN THE RESPONSE REWRITE THE RESPONSE
+        ** VERY IMPORTANT -- THE LAST QUESTION SHOULD NOT INCLUDE THE "~~" **
+        ** VERY IMPORTANT -- IF THERE ARE NO "~~" IN THE RESPONSE REWRITE THE RESPONSE **
 
-        the formatting in which you will write the quiz is as follows DO NOT ADD ANY EXTRA INFORMATION
+        the formatting in which you will write the quiz is as follows DO NOT ADD ANY EXTRA INFORMATION//
         NO EXTRA HEADERS AND NO EXTRA FOOTERS ONLY EXACTLY HOW WRITTEN (the text after the numbers are justs a template):
 
+     
+        ````
 
         1. write the first question here ~~
         2. write the second question here ~~
@@ -158,6 +160,7 @@ app.post("/ask", async (req, res) => {
         ${length}. write the last question here
         etc.
 
+        ````
 
         The quiz will be in a ${style} accent and if it does not sound like it is in a ${style} accent you will rewrite it until it does
         The quiz will inclide two tildes after EVERY QUESTION EXCEPT THE LAST if it does not include two tilde you will rewrite it until it does
