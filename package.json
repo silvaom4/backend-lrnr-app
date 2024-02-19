@@ -5,7 +5,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "node script.js"
+    "dev": "node script.js",
+    "test": "jest",
+    "start": "node start.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +20,10 @@
     "nodemon": "^3.0.3",
     "openai": "^4.26.0",
     "path": "^0.12.7",
+    "supertest": "^6.3.4",
     "url": "^0.11.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

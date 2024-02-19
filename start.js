@@ -192,24 +192,16 @@ app.post("/ask", async (req, res) => {
       options
     );
     const data = await response.json();
-    console.log(data);
-    console.log(JSON.stringify(data.choices[0].message));
+    // console.log(data);
+    // console.log(JSON.stringify(data.choices[0].message));
     res.send(data.choices[0].message);
   } catch (error) {
     console.error(error);
   }
 });
 
+app.listen(6747, () => {
+  console.log("Listen on port 6747");
+});
 
 
-
-
-export default app;
-
-
-
-
-
-// app.listen(6747, () => {
-//   console.log("Listen on port 6747");
-// });
